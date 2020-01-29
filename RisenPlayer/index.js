@@ -14,23 +14,23 @@
  */
 const Router = require('express').Router();
 
-module.exports = function (datastoreController) {
-    const RisenPlayerController = require('./RisenPlayerController').risenPlayerController(datastoreController);
+module.exports = function(datastoreController) {
+  const RisenPlayerController = require('./RisenPlayerController').risenPlayerController(datastoreController);
 
-    // Endpoint for getting a player id through a summoner name
-    Router.get('/risen-player-id-by-summoner-name',
-        RisenPlayerController.getRisenPlayerIdBySummoner
-    );
+  // Endpoint for getting a player id through a summoner name
+  Router.get('/risen-player-id-by-summoner-name', function(req, res, next) {
+    RisenPlayerController.getRisenPlayerIdBySummoner();
+  });
 
-    // Endpoint to create a new risen player
-    Router.post('/create-risen-player',
-        RisenPlayerController.createRisenPlayer
-    );
+  // Endpoint to create a new risen player
+  Router.post('/create-risen-player', function(req, res, next) {
+    RisenPlayerController.createRisenPlayer();
+  });
 
-    // Endpoint for testing if this API is up and running correctly
-    Router.get('/info',
-        RisenPlayerController.apiInfo
-    );
+  // Endpoint for testing if this API is up and running correctly
+  Router.get('/info', function(req, res, next) {
+    RisenPlayerController.apiInfo();
+  });
 
-    return Router;
+  return Router;
 };

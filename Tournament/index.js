@@ -15,13 +15,19 @@
 const Router = require('express').Router();
 
 module.exports = function (datastoreController) {
-    const TournamentController = require('./TournamentController')(datastoreController);
+    const TournamentController = require('./TournamentController').tournamentController(datastoreController);
 
     // Endpoint for game callbacks. Stores a Risen match into the database.
-    Router.get('/match-callback', TournamentController.matchCallback);
+    //TODO not entirely sure what to put in here
+    Router.get('/match-callback', function(req, res, next) {
+      Router.send(TournamentController.matchCallback(req));
+
+    });
 
     // Endpoing for generating tournament codes
-    Router.post('/generate-tcodes', TournamentController.generateTournyCodes);
-
+    //TODO
+    Router.post('/generate-tcodes', function(req, res, next) {
+      TournamentController.generateTournyCodes();
+    });
     return Router;
 };
