@@ -14,7 +14,8 @@ const app = express();
 // Create a connection to our Datastore and create a new client
 const { Datastore } = require('@google-cloud/datastore');
 const datastore = new Datastore();
-const datastoreController = require('./Datastore/DatastoreController')(datastore);
+const datastoreController = require('./Datastore/DatastoreController').dataStoreController(datastore);
+
 
 // Connect to the Riot API so we can generate codes and look up summoner info
 const { kayn } = require('kayn');

@@ -15,7 +15,7 @@
 const Router = require('express').Router();
 
 module.exports = function (datastoreController) {
-    const RisenPlayerController = require('./RisenPlayerController')(datastoreController);
+    const RisenPlayerController = require('./RisenPlayerController').risenPlayerController(datastoreController);
 
     // Endpoint for getting a player id through a summoner name
     Router.get('/risen-player-id-by-summoner-name',
